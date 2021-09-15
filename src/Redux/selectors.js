@@ -3,12 +3,13 @@ import { createSelector } from "reselect";
 export const usersSelector = (state) => state.users;
 export const filterSelector = (state) => state.filter;
 export const selectSelector = (state) => state.select;
-export const sortSelector = (state) => state.sort;
+export const sortSelector = (state) => state.sort.sort;
+export const sortReversSelector = (state) => state.sort.reverse;
 export const userSelector = (state) => state.userId;
 
 export const getVisibleUsers = createSelector(
-  [usersSelector, filterSelector, selectSelector, sortSelector],
-  (users, filter, select, sort) => {
+  [usersSelector, filterSelector, selectSelector, sortSelector, sortReversSelector],
+  (users, filter, select, sort, reverse) => {
     let filterResult = [...users];
     if (filter) {
       filterResult = filterResult.filter((users) =>
@@ -44,6 +45,9 @@ export const getVisibleUsers = createSelector(
         default:
           console.log('Invalid subscription type');
       }
+      if(reverse){
+        filterResult = filterResult.reverse();
+      }
     }
     return filterResult;
   }
@@ -62,6 +66,5 @@ export const getStates = createSelector([usersSelector], (users) => {
 });
 
 export const getUser = createSelector([usersSelector, userSelector], (users, userId) => {
-  // console.log(users, userId);
   return users.find(user => user.id === Number(userId))
 })

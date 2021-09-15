@@ -3,7 +3,7 @@ import { loremIpsum } from 'react-lorem-ipsum';
 
 const UserInfo = (currentUser) => {
     console.log(currentUser.user);
-    const {firstName, lastName, description, adress} = currentUser.user;
+    const {firstName, lastName, adress} = currentUser.user;
     const {city, state, streetAddress, zip} = adress;
   return (
     <div>
