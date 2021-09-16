@@ -10,7 +10,7 @@ const sortSlice = createSlice({
     editSort(state, { payload }) {
       return state.sort === payload
         ? { ...state, reverse: !state.reverse }
-        : { ...state, sort: payload };
+        : { sort: payload, reverse:false };
     },
   },
 });

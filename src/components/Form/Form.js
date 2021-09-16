@@ -12,14 +12,20 @@ const Form = () => {
   const inputHandler = (e) => {
     const filterInputValue = e.target.value;
     dispatch(editFilter(filterInputValue));
-    if (currentPage!==1) {
+    if (currentPage !== 1) {
       dispatch(editCurrentPage(1));
     }
   };
   return (
-    <form>
-      <input type="text" value={filterValue} onChange={inputHandler} />
-    </form>
+    <div className="filter-wrapper">
+        <input
+          className="filter-input"
+          type="text"
+          value={filterValue}
+          onChange={inputHandler}
+        />
+
+    </div>
   );
 };
 

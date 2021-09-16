@@ -14,20 +14,21 @@ function App() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => getUser(state));
 
-
   useEffect(() => {
     dispatch(getUsersOperation());
   }, [dispatch]);
 
   return (
     <div className="App">
-      <Form />
-      <Select />
-      <Table />
+      <div className="inputs-wrapper">
+        <Form />
+        <Select />
+      </div>
+      <Table className="table" />
       <Pagination/>
-      <div>
+      <div className="profile-wrapper">
         <p>Profile info:</p>
-        {currentUser && <UserInfo user={currentUser} />}
+        {currentUser && <UserInfo user={currentUser} className="usersInfo"/>}
       </div>
     </div>
   );

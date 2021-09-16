@@ -15,8 +15,9 @@ const Pagination = () => {
   }
 
   return (
-    <div>
+    <div className="pagination-wrapper">
       <button
+        className="arrows"
         disabled={currentPage === 1 ? true : false}
         onClick={() => dispatch(editCurrentPage(currentPage - 1))}
       >
@@ -38,6 +39,7 @@ const Pagination = () => {
         ))}
       </div>
       <button
+        className="arrows"
         disabled={currentPage === pageNumber.length ? true : false}
         onClick={() => dispatch(editCurrentPage(currentPage + 1))}
       >
