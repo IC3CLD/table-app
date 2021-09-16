@@ -6,6 +6,10 @@ export const selectSelector = (state) => state.select;
 export const sortSelector = (state) => state.sort.sort;
 export const sortReversSelector = (state) => state.sort.reverse;
 export const userSelector = (state) => state.userId;
+export const perPageSelector = (state) => state.pagination.perPage;
+export const currentPageSelector = (state) => state.pagination.currentPage;
+export const pagesSelector = (state) => state.pagination.pages;
+
 
 export const getVisibleUsers = createSelector(
   [usersSelector, filterSelector, selectSelector, sortSelector, sortReversSelector],
@@ -66,5 +70,5 @@ export const getStates = createSelector([usersSelector], (users) => {
 });
 
 export const getUser = createSelector([usersSelector, userSelector], (users, userId) => {
-  return users.find(user => user.id === Number(userId))
+  return users.find(user => user.id === Number(userId));
 })
